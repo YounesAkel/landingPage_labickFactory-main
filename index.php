@@ -483,7 +483,7 @@
             <div class="row">
 
                 <div class="col-md-7 col-sm-6">
-                    <form action="https://formsubmit.co/76a828a0aab52305999ede2f813f4c40" method="post">
+                    <form action="contact.php" method="post">
                         <h4 class="widget-title">Contactez-Nous pour Donner Vie à Vos Projets:</h4>
                         <div class="contact-form">
                             <p class="full-row">
@@ -505,6 +505,33 @@
                             <input class="mainBtn" type="submit" name="semt message" value="envoyer">
                         </div>
                     </form><!-- form -->
+                    <?php
+                     try{//creation de la base de donnee
+
+                        $conn=new PDO('mysql:host=localhost','root','');
+                        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                        $sql='CREATE DATABASE contacts';//requete de creation de la base de donnée
+                       $execrequete= $conn->exec($sql);//executer la requete
+                      
+                    }catch(Exception $e){
+                    }
+                    /*connection a la page de donnée*/
+
+                    try{
+                        $conn=new PDO('mysql:host=localhost;dbname=contacts','root','');
+                        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                    }catch(Exception $e){
+                        echo $e->getMessage();
+                    }
+                    //creation de la table contact
+                    $sql='CREATE TABLE IF NOT EXISTS contact(
+                        id_client smallint(6) unsigned auto_increment primary key,
+                        nom varchar(20) not null,
+                        email varchar(20) not null,
+                        sujet varchar(20) not null,
+                        contenu_messagee varchar(11) not null)';
+                    $execrequete1=$conn->exec($sql);
+                    ?>
                 </div> <!-- /.col-md-3 -->
 
                 <div class="col-md-5 col-sm-6">
