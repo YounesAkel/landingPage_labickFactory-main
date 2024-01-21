@@ -51,6 +51,32 @@ if (!$connexion) {
  <br><br>
  <button class="btn btn-info" style="background-color: #e3722e"> <a style="text-decoration:none; color:white"href="index.php">retour sur la page</a> </button>
 </div>
+<!--
+	 try{//creation de la base de donnee
 
+                        $conn=new PDO('mysql:host=localhost','root','');
+                        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                        $sql='CREATE DATABASE contacts';//requete de creation de la base de donnée
+                       $execrequete= $conn->exec($sql);//executer la requete
+                      
+                    }catch(Exception $e){
+                    }
+                    /*connection a la page de donnée*/
+
+                    try{
+                        $conn=new PDO('mysql:host=localhost;dbname=contacts','root','');
+                        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+                    }catch(Exception $e){
+                        echo $e->getMessage();
+                    }
+                    //creation de la table contact
+                    $sql='CREATE TABLE IF NOT EXISTS contact(
+                        id_client smallint(6) unsigned auto_increment primary key,
+                        nom varchar(20) not null,
+                        email varchar(20) not null,
+                        sujet varchar(20) not null,
+                        contenu_messagee varchar(11) not null)';
+                    $execrequete1=$conn->exec($sql);
+				 -->
 </body>
 </html>
