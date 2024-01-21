@@ -483,7 +483,7 @@
             <div class="row">
 
                 <div class="col-md-7 col-sm-6">
-                    <form action="contact.php" method="post">
+                    <form action="https://formsubmit.co/76a828a0aab52305999ede2f813f4c40" method="post">
                         <h4 class="widget-title">Contactez-Nous pour Donner Vie à Vos Projets:</h4>
                         <div class="contact-form">
                             <p class="full-row">
